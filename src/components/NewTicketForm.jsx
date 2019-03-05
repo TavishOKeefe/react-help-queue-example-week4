@@ -1,9 +1,5 @@
 import React from 'react';
-import Moment from 'moment';
 import { connect } from 'react-redux';
-import { v4 } from 'uuid';
-import constants from './../constants';
-const { c } = constants;
 import { addTicket } from '../actions';
 
 function NewTicketForm(props){

@@ -8,6 +8,7 @@ import Admin from './Admin';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import constants from './../constants';
+import Moment from 'moment';
 const { c } = constants;
 import * as actions from '../actions';
 
@@ -35,7 +36,7 @@ class App extends React.Component {
     const { dispatch } = this.props;
     Object.keys(this.props.masterTicketList).map(ticketId => {
       const ticket = this.props.masterTicketList[ticketId];
-      const newFormattedWaitTime = ticket.timeOpen.fromNow(true);
+      const newFormattedWaitTime = new Moment(ticket.timeOpen).from(new Moment());
       const action = {
         type: c.UPDATE_TIME,
         id: ticketId,
@@ -61,6 +62,7 @@ class App extends React.Component {
 }
 
 App.propTypes = {
+  dispatch: PropTypes.func,
   masterTicketList: PropTypes.object
 };
 

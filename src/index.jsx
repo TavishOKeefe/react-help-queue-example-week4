@@ -9,7 +9,7 @@ import thunkMiddleware from 'redux-thunk';
 
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
-let unsubscribe = store.subscribe(() =>
+store.subscribe(() =>
   console.log(store.getState())
 );
 
