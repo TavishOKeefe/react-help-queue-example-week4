@@ -4,14 +4,21 @@ import TicketList from './TicketList';
 import NewTicketControl from './NewTicketControl';
 import Error404 from './Error404';
 import { Switch, Route, withRouter } from 'react-router-dom';
-import Moment from 'moment';
 import Admin from './Admin';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import constants from './../constants';
 const { c } = constants;
+import * as actions from '../actions';
 
 class App extends React.Component {
+
+  componentWillMount() {
+    console.log('will mount');
+    const { dispatch } = this.props;
+    const { watchFirebaseTicketsRef } = actions;
+    dispatch(watchFirebaseTicketsRef());
+  }
 
   componentDidMount() {
     this.waitTimeUpdateTimer = setInterval(() =>
